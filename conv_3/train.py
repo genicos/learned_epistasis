@@ -18,16 +18,6 @@ lr = 0.000001 * 10000
 
 
 
-#Accuracy train: 0.8520
-#Accuracy test: 0.7860
-#
-#num_files = 50000
-#num_epochs = 200
-#batch_size = 64
-#train_prop = 0.9
-#num_estimate = 500
-#lr = 0.000001 * 1
-
 saving = True
 
 data_dir = "../../data/batch_6/"
@@ -37,18 +27,20 @@ if saving:
     X = [create_input1(data_dir+"sampled_genotypes/sample_" + str(i), data_dir+"commands/command_" + str(i)) for i in range(num_files)]
     X = [x for x in X if x is not None]
     X = torch.tensor(X).float()
-    torch.save(X, "X")
+    torch.save(X, "X100k_p11")
     print("FINISHED X")
     sys.stdout.flush()
 
     C = [convert_command_file1(data_dir+"sampled_genotypes/sample_" + str(i), data_dir+"commands/command_" + str(i)) for i in range(num_files)]
     C = [x for x in C if x is not None]
     C = torch.tensor(C).float()
-    torch.save(C, "C")
+    torch.save(C, "C100k_p11")
     
 else:
-    X = torch.load("X100k")
-    C = torch.load("C100k")
+    X = torch.load("X100k_p5")
+    C = torch.load("C100k_p5")
+
+
 
 print(X.shape)
 print(C.shape)
@@ -61,11 +53,6 @@ C = C.reshape(num_files*16, 15)
 
 print(X.shape)
 print(C.shape)
-
-for i in range(99):
-    for j in range(15):
-        print(X[0][j][i], end='\t')
-    print()
 
 ####
 

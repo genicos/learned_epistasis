@@ -6,7 +6,7 @@ torch.set_num_threads(64)
 
 num_indv = 99
 num_chrom = num_indv * 2
-piece_size = 5 #21
+piece_size = 11 #21
 len_chrom = 500
 samples_per_morgan = 1000
 
